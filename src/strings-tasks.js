@@ -160,7 +160,6 @@ function removeFirstOccurrences(str, value) {
   const stopIndex = startIndex + value.length;
   return str.replace(str.slice(startIndex, stopIndex), '');
 }
-removeFirstOccurrences('To be or not to be', 'be');
 
 /**
  * Remove the last occurrence of a substring from a string.
@@ -174,8 +173,13 @@ removeFirstOccurrences('To be or not to be', 'be');
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const startIndex = str.lastIndexOf(value);
+  if (startIndex === -1) {
+    return str;
+  }
+  const stopIndex = startIndex + value.length;
+  return `${str.substring(0, startIndex)}${str.substring(stopIndex)}`;
 }
 
 /**
@@ -190,8 +194,15 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let newStr = 0;
+  if (typeof str !== 'string') {
+    return 0;
+  }
+  for (let elem = 0; elem < str.length; elem += 1) {
+    newStr += Number(str.charCodeAt(elem));
+  }
+  return newStr;
 }
 
 /**
