@@ -320,10 +320,14 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const regex = /[aeiouyAEIOUY]/gi;
+  const counter = str.match(regex);
+  if (counter === null) {
+    return 0;
+  }
+  return counter.length;
 }
-
 /**
  * Returns true if the string is a palindrome; otherwise false.
  * https://en.wikipedia.org/wiki/Palindrome
@@ -337,8 +341,15 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const normalize = str.replace(/[^A-Z0-9]/gi, '').toLowerCase();
+
+  const normalizeReverse = normalize.split('').reverse().join('');
+
+  if (normalizeReverse === normalize) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -353,8 +364,9 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+
+
 }
 
 /**
